@@ -8,7 +8,7 @@ scene = new THREE.Scene();
 
 camera = new THREE.PerspectiveCamera(
   35,         // Field of view
-  $(window).width()-50 / $(window).height()-75,  // Aspect ratio
+  ($(window).width()-50) / ($(window).height()-75),  // Aspect ratio
   .1,         // Near
   10000       // Far
 );
