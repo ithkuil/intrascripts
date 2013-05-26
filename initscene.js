@@ -1,7 +1,7 @@
 //three.min.js
 
 renderer = new THREE.WebGLRenderer();
-renderer.setSize( $(window).width()-50, $(window).height()-50 );
+renderer.setSize( $(window).width()-50, $(window).height()-75 );
 document.body.appendChild( renderer.domElement );
 
 scene = new THREE.Scene();
