@@ -20,5 +20,5 @@ var light = new THREE.PointLight( 0xFFFF00 );
 light.position.set( 10, 0, 10 );
 scene.add( light );
 
-renderer.render( scene, camera );
+renderer.render( scene, camera ); 
 
