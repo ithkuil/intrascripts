@@ -7,6 +7,7 @@ var camera, scene, renderer;
 			var ray;
 
 			var blocker = document.getElementById( 'blocker' );
+			block.style.display = 'block';
 			var instructions = document.getElementById( 'instructions' );
 
 			// http://www.html5rocks.com/en/tutorials/pointerlock/intro/
