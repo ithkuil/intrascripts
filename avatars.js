@@ -161,6 +161,14 @@ function init() {
   //
 
   window.addEventListener( 'resize', onWindowResize, false );
+    
+  controls.originalUpdate = controls.update;
+  
+  controls.update = function() {
+    controls.originalUpdate();
+    console.log(controls.yawObject);
+    
+  }
 
 }
 
