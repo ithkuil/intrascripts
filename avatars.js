@@ -164,11 +164,11 @@ function init() {
     
   controls.originalUpdate = controls.update;
   
-  //controls.update = function() {
-  //  controls.originalUpdate();
+  controls.update = function() {
+    controls.originalUpdate();
   //  console.log(controls.yawObject);
-  //  
-  //}
+    
+  }
 
 }
 
