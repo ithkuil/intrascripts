@@ -3,9 +3,9 @@
        
 orig = window.controls.update
 
-#window.controls.update = ->
-# orig.call window.controls
-# #console.log window.camera.position
+window.controls.update = (delta) ->
+ orig.call window.controls delta
+ console.log JSON.stringify(window.camera.position)
     
     
 alert "hi"
