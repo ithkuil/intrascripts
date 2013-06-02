@@ -13,9 +13,9 @@ window.controls.update = (delta) ->
   x: beforePos.x - obj.position.x
   y: beforePos.y - obj.position.y
   z: beforePos.z - obj.position.z
- if Math.abs(diff.x) > 1.001 or
-    Math.abs(diff.y) > 1.001 or
-    Math.abs(diff.z) > 1.001       
+ if Math.abs(diff.x) > 0.001 or
+    Math.abs(diff.y) > 0.001 or
+    Math.abs(diff.z) > 0.001       
    nn += 1
    if nn % 10 is 0
     window.console.log "diff is: #{JSON.stringify(diff)}"
