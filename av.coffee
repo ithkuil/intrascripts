@@ -8,8 +8,6 @@ orig = window.controls.update
 window.controls.update = (delta) ->
  ret = orig.call window.controls, delta
  nn += 1
- if nn % 1000 is 0
-  window.console.log JSON.stringify(window.camera.position)
+ if nn % 100 is 0
+  window.console.log JSON.stringify(window.controls.getObject().position)
  ret
-    
-alert "hi2"
