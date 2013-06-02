@@ -19,5 +19,14 @@ window.controls.update = (delta) ->
    nn += 1
    if nn % 10 is 0
     window.console.log "diff is: #{JSON.stringify(diff)}"
+    msg =
+      move:
+        id: window.userid
+        pos:
+          x: obj.position.x
+          y: obj.position.y
+          z: obj.position.z
+    window.channel.send msg
+    
    #window.console.log JSON.stringify(window.controls.getObject().position)
  ret
