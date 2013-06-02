@@ -13,6 +13,6 @@ window.controls.update = (delta) ->
  if Math.abs(diff.x) > 1.001 or
     Math.abs(diff.y) > 1.001 or
     Math.abs(diff.z) > 1.001         
-   window.console.log JSON.stringify(diff)
+   window.console.log "diff is: #{JSON.stringify(diff)}"
    #window.console.log JSON.stringify(window.controls.getObject().position)
  ret
