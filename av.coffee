@@ -5,7 +5,7 @@ orig = window.controls.update
 
 window.controls.update = ->
  orig.call window.controls
- console.log window.controls.yawObject
+ console.log window.camera
     
     
 alert "hello"
