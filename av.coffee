@@ -10,8 +10,8 @@ window.controls.update = (delta) ->
  beforePos = obj.position.clone()
  ret = orig.call window.controls, delta
  diff = obj.position.sub beforePos
- if Math.abs(diff.x) > 0.001 or
-    Math.abs(diff.y) > 0.001 or
-    Math.abs(diff.z) > 0.001         
+ if Math.abs(diff.x) > 1.001 or
+    Math.abs(diff.y) > 1.001 or
+    Math.abs(diff.z) > 1.001         
    window.console.log JSON.stringify(window.controls.getObject().position)
  ret
