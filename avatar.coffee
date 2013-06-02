@@ -1,112 +1,109 @@
  
 #based on mrdoob's pointerlockcontrols
 
-class Avatar
-  constructor: (@camera) ->
-   
-   
-  init: =>   
-    pitchObject = new THREE.Object3D()  
-    if camera?
-	   pitchObject.add @camera 
+class window.Avatar
+  constructor: (@camera) ->   
+    @init()
 
-	   yawObject = new THREE.Object3D()
-	   yawObject.position.y = 10
-	   yawObject.add pitchObject
+  init: =>
+    @listeners = []
 
-	   @moveForward = false
-	   @moveBackward = false
-	   @moveLeft = false
-   	@moveRight = false
-   
-   	@isOnObject = false
-   	@canJump = false
-   
-   	@velocity = new THREE.Vector3()
-   
-   	@PI_2 = Math.PI / 2
-    
+    @pitchObject = new THREE.Object3D()  
     if @camera?
-      window.document.addEventListener 'mousemove', onMouseMove, false
-	     window.document.addEventListener 'keydown', onKeyDown, false
-	     window.document.addEventListener 'keyup', onKeyUp, false
+      @pitchObject.add @camera 
 
-	   @enabled = false
-   
+    @yawObject = new THREE.Object3D()
+    @yawObject.position.y = 10
+    @yawObject.add @pitchObject
+
+    @state =
+      forward: false
+      left: false
+      right: false
+      back: false
+      isOnObject: false
+      canJump: false
+      jumping: false
+
+    @velocity = new THREE.Vector3()
+
+    @PI_2 = Math.PI / 2
+
+    if @camera?
+      window.document.addEventListener 'mousemove', @onMouseMove, false
+      window.document.addEventListener 'keydown', @onKeyDown, false
+      window.document.addEventListener 'keyup', @onKeyUp, false
+
+    @enabled = false
+
   onMouseMove: (event) =>   
-   		if not scope.enabled then return
-   
-   		@movementX = event.movementX or event.mozMovementX or event.webkitMovementX or 0
-   		@movementY = event.movementY or event.mozMovementY or event.webkitMovementY or 0
-   
-   		@yawObject.rotation.y -= @movementX * 0.002
-   		@pitchObject.rotation.x -= @movementY * 0.002
+    if not @enabled then return
 
-		   @pitchObject.rotation.x = Math.max - PI_2, Math.min( PI_2, @pitchObject.rotation.x )
+    @movementX = event.movementX or event.mozMovementX or event.webkitMovementX or 0
+    @movementY = event.movementY or event.mozMovementY or event.webkitMovementY or 0
 
+    @yawObject.rotation.y -= @movementX * 0.002
+    @pitchObject.rotation.x -= @movementY * 0.002
 
- 	onKeyDown: (event) =>
- 		switch event.keyCode 
- 			when 38, 87 then @moveForward = true
-    when 37, 65 then @moveLeft = true
-    when 40, 83 then @moveBackward = true 
-    when 39, 68 then @moveRight = true
-    when 32  			
- 				if @canJump @velocity.y += 10
- 				@canJump = false
+    @pitchObject.rotation.x = Math.max - PI_2, Math.min( PI_2, @pitchObject.rotation.x )
+  
+  setState: (state_, val) =>
+    @state[state_] = val
+    for listener in @listeners
+      listener state_, val
 
-	onKeyUp: (event) =>
-		switch  event.keyCode
-  		when 38, 87 then @moveForward = true
-    when 37, 65 then @moveLeft = true
-    when 40, 83 then @moveBackward = true 
-    when 39, 68 then @moveRight = true
+  handleKeys: (event, val) =>  
+    switch event.keyCode 
+    when 38, 87 then @setState 'forward', val
+    when 37, 65 then @setState 'left', val
+    when 40, 83 then @setState 'back', val
+    when 39, 68 then @setState 'right', val
+    when 32 then @jump()       
 
- 
-	getObject: =>	@yawObject
+  onKeyDown: (event) =>
+    if event.keyCode is 32
+      @jump
+    else
+      @handleKeys event, true
 
+  jump: =>
+    if @state.canJump
+      @velocity.y += 10
+      setState 'jumping', true
+      setState 'canJump', false
 
- isOnObject: (boolean) =>
-		@isOnObject = boolean
-		@canJump = boolean
+  onKeyUp: (event) =>
+    @handleKeys event, false
 
-	
-	this.update = function ( delta ) {
+  getObject: => @yawObject
 
-		if ( scope.enabled === false ) return;
+  isOnObject: (boolean) =>
+    @isOnObject = boolean
+    @canJump = boolean
 
-		delta *= 0.1;
+  update: (delta) =>
+    if not scope.enabled then return
+    delta *= 0.1
 
-		velocity.x += ( - velocity.x ) * 0.08 * delta;
-		velocity.z += ( - velocity.z ) * 0.08 * delta;
+    @velocity.x += ( - @velocity.x ) * 0.08 * delta
+    @velocity.z += ( - @velocity.z ) * 0.08 * delta
 
-		velocity.y -= 0.25 * delta;
+    @velocity.y -= 0.25 * delta
 
-		if ( moveForward ) velocity.z -= 0.12 * delta;
-		if ( moveBackward ) velocity.z += 0.12 * delta;
+    if @state.forward then @velocity.z -= 0.12 * delta
+    if @state.back then @velocity.z += 0.12 * delta    
+    if @state.left then @velocity.x -= 0.12 * delta
+    if @state.right then @velocity.x += 0.12 * delta
 
-		if ( moveLeft ) velocity.x -= 0.12 * delta;
-		if ( moveRight ) velocity.x += 0.12 * delta;
+    if @state.isOnObject
+      @velocity.y = Math.max 0, @velocity.y
 
-		if ( isOnObject === true ) {
+    @yawObject.translateX @velocity.x
+    @yawObject.translateY @velocity.y
+    @yawObject.translateZ @velocity.z
 
-			velocity.y = Math.max( 0, velocity.y );
+    if @yawObject.position.y < 10
+      @velocity.y = 0;
+      @yawObject.position.y = 10
 
-		}
-
-		yawObject.translateX( velocity.x );
-		yawObject.translateY( velocity.y ); 
-		yawObject.translateZ( velocity.z );
-
-		if ( yawObject.position.y < 10 ) {
-
-			velocity.y = 0;
-			yawObject.position.y = 10;
-
-			canJump = true;
-
-		}
-
-	};
-
-};
+      @state.canJump = true
