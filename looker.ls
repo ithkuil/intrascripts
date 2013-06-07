@@ -1,4 +1,4 @@
-window.Looker ~>
+window.Looker = ~>
 
   initLooker: ~>
     if @camera?
