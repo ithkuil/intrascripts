@@ -1,0 +1,6 @@
+#!/bin/bash
+mkdir lib
+lsc -o lib -c *.ls 
+cd lib
+cat walker.js looker.js mover.js statebroadcaster.js avatar.js | uglifyjs > intracore.min.js
+cd ..
