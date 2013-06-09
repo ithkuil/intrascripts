@@ -4,12 +4,12 @@ define( ['pointerlock', 'world'], function(pl, world) {
       window.document.addEventListener('mousemove', onMouseMove, false);
       var self = this;
 
-      this.pitchObject = new THREE.Object3D()  
-      this.pitchObject.add camera
+      this.pitchObject = new THREE.Object3D();  
+      this.pitchObject.add(camera);
 
       this.yawObject = new THREE.Object3D()
-      this.yawObject.position.y = 10
-      this.yawObject.add this.pitchObject;
+      this.yawObject.position.y = 10;
+      this.yawObject.add(this.pitchObject);
 
       this.PI_2 = Math.PI / 2;
 
