@@ -12,16 +12,18 @@ define( [], function() {
 
       var pointerlockchange = function ( event ) {
         if ( document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element ) {
-          controls.enabled = true;
+          if (controls) { controls.enabled = true; }
+          element.style,display = 'none';
         } else {
-          controls.enabled = false;
+          if (controls) { controls.enabled = false; }
+          element.style,display = 'block';
         }
       }
 
       var pointerlockerror = function ( event ) {
         instructions.style.display = '';
       }
-      element.innerHTML = "<div style='position: fixed; top: 100px; left: 100px; z-index: 9999;'>Click to enable pointer lock" + element.innerHTML + "</div>";
+      
       document.addEventListener( 'pointerlockchange', pointerlockchange, false );
       document.addEventListener( 'mozpointerlockchange', pointerlockchange, false );
       document.addEventListener( 'webkitpointerlockchange', pointerlockchange, false );
