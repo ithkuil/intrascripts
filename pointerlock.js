@@ -5,7 +5,7 @@ define( [], function() {
     var havePointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
 
     if ( havePointerLock ) {
-      document.body.innerHTML = "<div id='blocker' style='height: 95%; z-index: 999; top: 90px; width: 100%; position: fixed;'></div>" + document.body.innerHTML;
+      document.body.innerHTML = "<div id='blocker' style='height: 95%; z-index: 999; top: 50px; width: 100%; position: fixed;'></div>" + document.body.innerHTML;
       var element = document.getElementById('blocker');
       element.innerHTML = "<div id='pl1' style='position: fixed; border: 1px dotted white; height: 100px; top: 100px; left: 100px; z-index: 9999;'>Click to enable pointer lock</div>" + element.innerHTML ;
       //element = document.getElementById('pl1');
