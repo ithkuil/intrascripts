@@ -41,6 +41,8 @@ define( [], function() {
         element.requestFullscreen = element.requestFullscreen || element.mozRequestFullscreen || element.mozRequestFullScreen || element.webkitRequestFullscreen;
         element.requestFullscreen();
       } else {
+        console.log("Calling requestpointerlock on element");
+        console.log(element);
         element.requestPointerLock();
       }
     }
