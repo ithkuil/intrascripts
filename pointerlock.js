@@ -54,7 +54,7 @@ define( [], function() {
       }
 
     }
-  }
+  
   getPointerLock();
   return getPointerLock;
 });
