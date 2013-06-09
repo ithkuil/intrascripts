@@ -20,7 +20,7 @@ define( [], function() {
       var pointerlockerror = function ( event ) {
         instructions.style.display = '';
       }
-      element.innerHTML = "<div style='position: fixed; top: 100px; left: 100px; z-index: 9999;'>Click to enable pointer lock" + element.innerHTML + "</div>"
+      element.innerHTML = "<div style='position: fixed; top: 100px; left: 100px; z-index: 9999;'>Click to enable pointer lock" + element.innerHTML + "</div>";
       document.addEventListener( 'pointerlockchange', pointerlockchange, false );
       document.addEventListener( 'mozpointerlockchange', pointerlockchange, false );
       document.addEventListener( 'webkitpointerlockchange', pointerlockchange, false );
@@ -31,6 +31,7 @@ define( [], function() {
 
       element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
       console.log('Pointerlock..');
+
       element.addEventListener('click', function() {
         console.log('clicked');
         if ( /Firefox/i.test( navigator.userAgent ) ) {
@@ -51,6 +52,7 @@ define( [], function() {
           element.requestPointerLock();
         }
       }
+
     }
   }
   getPointerLock();
