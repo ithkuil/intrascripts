@@ -1,7 +1,7 @@
 define( ['pointerlock', 'world'], function(pl, world) {
   addType('looker', function() {
     window.addEventListener('hookControls', function(camera) {
-      window.document.addEventListener 'mousemove', onMouseMove, false
+      window.document.addEventListener('mousemove', onMouseMove, false);
       var self = this;
 
       this.pitchObject = new THREE.Object3D()  
