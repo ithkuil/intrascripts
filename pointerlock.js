@@ -12,10 +12,10 @@ define( [], function() {
 
       var pointerlockchange = function ( event ) {
         if ( document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element ) {
-          element.style,display = 'none';
+          element.style.display = 'none';
           if (controls) { controls.enabled = true; }
         } else {
-          element.style,display = 'block';
+          element.style.display = 'block';
           if (controls) { controls.enabled = false; }
         }
       }
