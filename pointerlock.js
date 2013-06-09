@@ -52,7 +52,7 @@ define( [], function() {
           console.log(element);
           element.requestPointerLock();
         }
-      }
+      });
 
     }
   }
