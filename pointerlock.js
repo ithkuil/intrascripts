@@ -32,6 +32,7 @@ define( [], function() {
       element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
       console.log('Pointerlock..');
       $(element).on('click'), function() {
+        console.log('clicked');
         if ( /Firefox/i.test( navigator.userAgent ) ) {
           var fullscreenchange = function ( event ) {
             if ( document.fullscreenElement === element || document.mozFullscreenElement === element || document.mozFullScreenElement === element ) {
