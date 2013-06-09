@@ -16,8 +16,8 @@ define( ['pointerlock', 'world'], function(pl, world) {
       onMouseMove = function (event) {
         //if (!self.enabled) return;
 
-        @movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
-        @movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+        self.movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+        self.movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
 
         self.yawObject.rotation.y -= self.movementX * 0.002;
         self.pitchObject.rotation.x -= self.movementY * 0.002;
