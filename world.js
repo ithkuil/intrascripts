@@ -1,6 +1,6 @@
 define( 'world', [], function() { 
 
-  initScene = function {
+  initScene = function() {
     renderer = new THREE.WebGLRenderer();
     renderer.setSize( $(window).width()-50, $(window).height()-75 );
     document.body.appendChild( renderer.domElement );
