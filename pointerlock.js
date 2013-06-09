@@ -4,6 +4,7 @@ define( [], function() {
     var havePointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
 
     if ( havePointerLock ) {
+      console.log("Have pointerlock");
       var element = document.body;
 
       var pointerlockchange = function ( event ) {
