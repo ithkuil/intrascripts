@@ -12,11 +12,11 @@ define( [], function() {
 
       var pointerlockchange = function ( event ) {
         if ( document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element ) {
-          if (controls) { controls.enabled = true; }
           element.style,display = 'none';
+          if (controls) { controls.enabled = true; }
         } else {
-          if (controls) { controls.enabled = false; }
           element.style,display = 'block';
+          if (controls) { controls.enabled = false; }
         }
       }
 
