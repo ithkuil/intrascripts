@@ -1,6 +1,6 @@
 define( ['https://raw.github.com/ithkuil/intrascripts/master/pointerlock.js', 
   'https://raw.github.com/ithkuil/intrascripts/master/world.js'], function(pl, world) {
-  addType('looker', function() {
+  window.addType('looker', function() {
     window.addEventListener('hookControls', function(camera) {
       window.document.addEventListener('mousemove', onMouseMove, false);
       var self = this;
