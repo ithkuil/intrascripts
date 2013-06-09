@@ -1,5 +1,6 @@
 define( [], function() {
   getPointerLock = function() {
+    console.log("Hello from pointerlock");
     var havePointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
 
     if ( havePointerLock ) {
