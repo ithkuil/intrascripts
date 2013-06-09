@@ -8,14 +8,14 @@ define( [], function() {
       
       var element = document.body;
       element.innerHTML = "<div id='pl1' style='position: fixed; border: 1px dotted white; height: 100px; top: 100px; left: 100px; z-index: 9999;'>Click to enable pointer lock" + element.innerHTML + "</div>"
-      element = document.getElementById('pl1');
-
+      //element = document.getElementById('pl1');
+      var instructions = document.getElementById('pl1');
       var pointerlockchange = function ( event ) {
         if ( document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element ) {
-          element.style.display = 'none';
+          instructions.style.display = 'none';
           if (controls) { controls.enabled = true; }
         } else {
-          element.style.display = 'block';
+          instructions.style.display = 'block';
           if (controls) { controls.enabled = false; }
         }
       }
