@@ -28,7 +28,7 @@ define( [], function() {
       document.addEventListener( 'webkitpointerlockerror', pointerlockerror, false );
 
       element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
-
+      console.log('Pointerlock..');
       $(element).on('click'), function() {
         if ( /Firefox/i.test( navigator.userAgent ) ) {
           var fullscreenchange = function ( event ) {
