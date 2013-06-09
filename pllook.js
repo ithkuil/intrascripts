@@ -23,7 +23,8 @@ define( ['pointerlock', 'world'], function(pl, world) {
         self.pitchObject.rotation.x -= self.movementY * 0.002;
 
         self.pitchObject.rotation.x = Math.max(-self.PI_2, Math.min( self.PI_2, self.pitchObject.rotation.x ));
-      });
+      }
+
     });  
   })
 });
