@@ -7,7 +7,7 @@ define( [], function() {
       
       var element = document.body;
       element.innerHTML = "<div id='pl1' style='position: fixed; border: 1px dotted white; height: 100px; top: 100px; left: 100px; z-index: 9999;'>Click to enable pointer lock" + element.innerHTML + "</div>"
-      element = $('#pl1');
+      element = document.getElementById('pl1');
 
       var pointerlockchange = function ( event ) {
         if ( document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element ) {
@@ -31,7 +31,7 @@ define( [], function() {
 
       element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
       console.log('Pointerlock..');
-      $(element).on('click'), function() {
+      element.addEventListener('click', function() {
         console.log('clicked');
         if ( /Firefox/i.test( navigator.userAgent ) ) {
           var fullscreenchange = function ( event ) {
