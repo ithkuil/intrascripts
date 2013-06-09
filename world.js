@@ -1,4 +1,4 @@
-define( [], function() { 
+define( 'world', [], function() { 
 
   initScene = function {
     renderer = new THREE.WebGLRenderer();

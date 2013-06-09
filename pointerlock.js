@@ -1,4 +1,4 @@
-define( [], function() {
+define( 'pointerlock', [], function() {
 
   getPointerLock = function() {
     
