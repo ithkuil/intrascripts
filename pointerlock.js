@@ -1,4 +1,5 @@
 define( [], function() {
+
   getPointerLock = function() {
     
     var havePointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
@@ -54,7 +55,7 @@ define( [], function() {
       }
 
     }
-  
+  }
   getPointerLock();
-  return getPointerLock;
+  return getPointerLock;  
 });
