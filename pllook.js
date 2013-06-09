@@ -5,7 +5,7 @@ define( ['pointerlock', 'world'], function(pl, world) {
       var self = this;
 
       this.pitchObject = new THREE.Object3D()  
-      this.pitchObject.add camera 
+      this.pitchObject.add camera
 
       this.yawObject = new THREE.Object3D()
       this.yawObject.position.y = 10
